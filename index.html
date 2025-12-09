@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pages | Authenticatios</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet" href="assets/css/remixicon.css">
+  <!-- BootStrap css -->
+  <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+  <!-- Apex Chart css -->
+  <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
+  <!-- Data Table css -->
+  <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
+  <!-- Text Editor css -->
+  <link rel="stylesheet" href="assets/css/lib/editor-katex.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.atom-one-dark.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.quill.snow.css">
+  <!-- Date picker css -->
+  <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
+  <!-- Calendar css -->
+  <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
+  <!-- Vector Map css -->
+  <link rel="stylesheet" href="assets/css/lib/jquery-jvectormap-2.0.5.css">
+  <!-- Popup css -->
+  <link rel="stylesheet" href="assets/css/lib/magnific-popup.css">
+  <!-- Slick Slider css -->
+  <link rel="stylesheet" href="assets/css/lib/slick.css">
+  <!-- prism css -->
+  <link rel="stylesheet" href="assets/css/lib/prism.css">
+  <!-- file upload css -->
+  <link rel="stylesheet" href="assets/css/lib/file-upload.css">
+  
+  <link rel="stylesheet" href="assets/css/lib/audioplayer.css">
+  <link rel="stylesheet" href="assets/css/self.css">
+  <!-- main css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+  <body>
+
+<section class="auth d-flex flex-wrap justify-content-center align-items-center min-vh-100"> 
+    <!-- Add the particles container -->
+    <div id="particles-js"></div>
+    
+    <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center align-items-center">
+        <div class="max-w-464-px mx-auto w-100">
+            <div>
+                <div>
+                    <div class="d-flex justify-content-center align-items-center mb-12 position-relative" style="height: 80px;">
+                        <div class="position-absolute" style="top: -15px; left: 20px;">
+                            <span class="wave-text" style="transform: rotate(345deg); font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500; display: inline-block; text-align: center;">
+                                82.5K<br>Total Users
+                            </span>
+                        </div>
+                        <h2 class="wave-text mb-0">SPLUNK X</h2>
+                        <div class="position-absolute" style="top: -15px; right: 20px;">
+                            <span class="wave-text" style="transform: rotate(15deg); font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500; display: inline-block; text-align: center;">
+                                1.5M<br>Total Beams
+                            </span>
+                        </div>
+                    </div>
+                    <p class="mb-12 text-secondary-light text-sm text-center" style="opacity: 0.7;">Welcome jew! we provide a God-tier services and always do an latest update, since 2020.</p>
+                </div>
+            <form action="#">
+                <button type="button" class="fw-semibold text-white py-16 px-24 w-100 border border-white radius-12 text-md d-flex align-items-center justify-content-center gap-12 line-height-1 bg-hover-primary-50 wave-btn"> 
+                    <iconify-icon icon="logos:discord-icon" class="text-xl line-height-1"></iconify-icon>
+                    Continue with Discord 
+                </button>
+            </form>
+        </div>
+    </div>
+	</div>
+</section>
+  <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/lib/apexcharts.min.js"></script>
+  <script src="assets/js/lib/dataTables.min.js"></script>
+  <script src="assets/js/lib/iconify-icon.min.js"></script>
+  <script src="assets/js/lib/jquery-ui.min.js"></script>
+  <script src="assets/js/lib/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="assets/js/lib/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="assets/js/lib/magnifc-popup.min.js"></script>
+  <script src="assets/js/lib/slick.min.js"></script>
+  <script src="assets/js/lib/prism.js"></script>
+  <script src="assets/js/lib/file-upload.js"></script>
+  <script src="assets/js/lib/audioplayer.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="/assets/js/particles.js"></script>
+<script>
+  const discordConfig = {
+    clientId: '1372741572340486205',
+    redirectUri: encodeURIComponent(window.origin + '/auth/callback'),
+    scope: encodeURIComponent('identify')
+  };
+
+  function openDiscordAuth() {
+    const width = 500;
+    const height = 800;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2;
+    
+    const url = `https://discord.com/api/oauth2/authorize?client_id=${discordConfig.clientId}&redirect_uri=${discordConfig.redirectUri}&response_type=code&scope=${discordConfig.scope}`;
+    
+    const popup = window.open(
+      url,
+      'discord-oauth',
+      `width=${width},height=${height},left=${left},top=${top},status=no,scrollbars=yes,resizable=yes`
+    );
+    
+    const checkPopup = setInterval(() => {
+      if (!popup || popup.closed) {
+        clearInterval(checkPopup);
+      }
+    }, 500);
+    
+    window.addEventListener('message', (event) => {
+      if (event.origin === window.location.origin) {
+        if (event.data.type === 'discord-oauth-success') {
+          console.log('Authentication successful:', event.data.code);
+          clearInterval(checkPopup);
+          window.location.href = '/dashboard/overview';
+        }
+      }
+    }, false);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const discordButton = document.querySelector('button.wave-btn');
+    if (discordButton) {
+      discordButton.addEventListener('click', openDiscordAuth);
+    }
+  });
+</script>
+</body>
+</html>
