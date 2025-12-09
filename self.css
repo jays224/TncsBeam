@@ -1,0 +1,373 @@
+/* Fix particles.js positioning */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* This ensures it stays behind all content */
+  pointer-events: none; /* This makes it non-interactive so clicks pass through */
+}
+
+/* Ensure all interactive elements have proper z-index */
+.sidebar, 
+.dashboard-main-body,
+.navbar-header,
+button,
+a,
+select,
+input,
+.dropdown-menu,
+.card {
+  position: relative;
+  z-index: 1; /* Ensures these elements appear above particles */
+}
+
+.auth-right {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .auth {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Wave text animation */
+  .wave-text {
+    position: relative;
+    color: transparent;
+    background: linear-gradient(
+      to bottom,
+      #4285f4 20%,
+      #34a0a4 40%,
+      #168aad 60%,
+      #1a759f 80%
+    );
+    background-size: 100% 220%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: wave 4s ease-in-out infinite;
+    text-shadow: 0px 0px 8px rgba(66, 133, 244, 0.3);
+    font-weight: 700;
+    text-align: center; /* Center the text */
+    width: 100%; /* Ensure full width */
+  }
+  
+  @keyframes wave {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 0 100%;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  /* Add a subtle wave effect to the text with a pseudo-element */
+  .wave-text::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(66, 133, 244, 0.5);
+    animation: wave-text 3s ease-in-out infinite;
+  }
+  
+  @keyframes wave-text {
+    0%, 100% {
+      clip-path: polygon(
+        0% 45%, 
+        16% 44%, 
+        33% 50%, 
+        54% 60%, 
+        70% 61%, 
+        84% 59%, 
+        100% 52%, 
+        100% 100%, 
+        0% 100%
+      );
+    }
+    50% {
+      clip-path: polygon(
+        0% 60%, 
+        15% 65%, 
+        34% 66%, 
+        51% 62%, 
+        67% 50%, 
+        84% 45%, 
+        100% 46%, 
+        100% 100%, 
+        0% 100%
+      );
+    }
+  }
+
+  .wave-btn {
+      position: relative;
+      overflow: hidden;
+      color: white !important;
+      z-index: 1;
+      transition: all 0.3s ease;
+      }
+
+  .wave-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(66, 133, 244, 0.3),
+          transparent
+      );
+      z-index: -1;
+      transform: translateX(-100%);
+      animation: wave-btn 3s infinite linear;
+  }
+
+  @keyframes wave-btn {
+      0% {
+          transform: translateX(-100%);
+      }
+      100% {
+          transform: translateX(100%);
+      }
+  }
+
+   .wave-btn:hover::before {
+      animation-duration: 1.5s;
+  }
+ 
+  .activity-day:hover {
+    background-color: #3498db !important;
+    cursor: pointer;
+  }
+  
+  /* For days with activity */
+  .activity-day.has-activity-low {
+    background-color: #196127 !important;
+  }
+  .activity-day.has-activity-medium {
+    background-color: #239a3b !important;
+  }
+  .activity-day.has-activity-high {
+    background-color: #2ecc71 !important;
+  }
+  .rank-container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .rank-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .rank-name {
+    color: #ff5555;
+    font-weight: 600;
+  }
+  
+  .rank-progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  
+  .rank-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff5555, #ff7777);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+  
+  .rank-progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .next-rank {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .next-rank-name {
+    color: #aaaaaa;
+    font-weight: 500;
+  }
+
+  .scaleonhover:hover {
+	  transform: scale(1.03);
+	}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    height: auto;
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+.realtime-icon {
+  color: #00ff88; /* Neon green */
+  font-size: 1.4rem;
+  animation: realtimePulse 1.2s infinite ease-in-out;
+  text-shadow: 0 0 8px #00ff88, 0 0 12px #00ff88;
+}
+
+@keyframes realtimePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+    text-shadow: 0 0 8px #00ff88, 0 0 12px #00ff88;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+    text-shadow: 0 0 12px #00ff88, 0 0 20px #00ff88;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+    text-shadow: 0 0 8px #00ff88, 0 0 12px #00ff88;
+  }
+}
+.leaderboard-item {
+  transition: all 0.1s ease;
+}
+
+/* Glow */
+.glow-hover:hover {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
+/* Shadow pop */
+.shadow-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Background fade */
+.bg-fade-hover {
+  background-color: white;
+}
+.bg-fade-hover:hover {
+  background-color: #e9f5ff;
+}
+
+/* Underline grow */
+.underline-grow {
+  position: relative;
+}
+.underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0%;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+.underline-hover:hover .underline-grow::after {
+  width: 100%;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #ccc;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.sidebar-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background-color: #1c1f26;
+  color: #fff;
+}
+
+.sidebar-item:hover i,
+.sidebar-item.active i {
+  transform: translateX(4px);
+}
+
+.sidebar-item:hover::before,
+.sidebar-item.active::before {
+  transform: scaleY(1);
+}
+
+.sidebar-item i {
+  transition: transform 0.2s ease;
+}
+.sidebar-item .menu-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.25rem;
+}
+
+.sidebar-item:hover .menu-icon,
+.sidebar-item.active .menu-icon {
+  transform: rotate(20deg) scale(1.1);
+  color: #0d6efd;
+}
+.selected {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+  }
